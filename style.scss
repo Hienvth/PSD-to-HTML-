@@ -1,29 +1,35 @@
 $primary-color: #ffc87a;
 $text-color: #1a2b5f;
 $text-gray : #c6cad7;
-*,
-*:before,
-*:after{
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-body{
-    font-family: "Poppins", sans-serif;
-    color: $text-color;
-    line-height: 1.4rem;
-    font-weight: 400;
-}
 html {
     font-size: 62.5%;
 }
-img{
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+img {
     display: block;
     max-width: 100%;
 }
-a{
-    text-decoration: none;
+body {
+    font-family: "Poppins", sans-serif;
+    color: $text-color;
+    line-height: 1.4;
+    font-weight: 400;
 }
-@mixin  flex($align: flex-start, $justify: flex-start, $wrap: nowrap, $dir: row){
+@mixin  flex(
+  $align: flex-start, 
+  $justify: flex-start, 
+  $wrap: nowrap, 
+  $dir: row
+) {
     display: flex;
     align-items: $align;
     justify-content: $justify;
@@ -38,20 +44,20 @@ a{
     max-width: 1440px;
     margin: 0 auto ;
 }
-.container{
+.container {
     margin: 0 auto;
-    min-width: 1210px;
+    max-width: 1210px;
     padding-left: 2rem ;
-    padding-right: 2rem;
+    padding-right: 2rem;  
 }
 .header{
     padding-top: 4rem;
     &__inner {
-        @include flex(center, space-between)
+        @include flex(center, space-between);
     }
     &__menu{
         &-list{
-            @include flex(center)
+            @include flex(center);
         }
         &-item{
             margin-left: 5rem;
@@ -141,7 +147,19 @@ a{
         padding: 2.5rem;
         background-color: #fff;
         border-radius: 2rem;
-        @include flex( stretch, flex-start ,nowrap, column )
+        @include flex( stretch, flex-start ,nowrap, column );
+        &:first-child {
+            box-shadow: 0 20px 35px -5px rgba(255, 151, 195, 0.25);
+        }
+        &:nth-child(2) {
+        box-shadow: 0 20px 35px -5px rgba(255, 112, 109, 0.25);
+        }
+        &:nth-last-child(2) {
+        box-shadow: 0 20px 35px -5px rgba(133, 152, 255, 0.25);
+        }
+        &:last-child {
+        box-shadow: 0 20px 35px -5px rgba(255, 200, 122, 0.25);
+        }
     }
     &__img{
         border-radius: inherit; // kế thừa từ cha thuộc tính
@@ -169,3 +187,156 @@ a{
         }
     }
 }
+.feature{
+    padding-top: 18rem;
+    &__item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 15rem;
+        &:nth-child(odd) {
+            .feature__info {
+                padding-left: 10rem;
+            }
+        }
+        // odd lẻ
+        // even chẵn
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+            .feature__info{
+                padding-right: 10rem;
+            }
+        }
+    }
+    &__image,
+    &__info{
+        flex: 1;
+    }
+    &__title{
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 2.5rem;
+    }
+    &__desc{
+        font-weight: 300;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        margin-bottom: 4rem;
+        color: $text-gray;
+    }
+    &__intro{
+        
+        &--item{
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-decoration: underline;
+            font-size: 1.8rem;
+            &--circle{
+                text-decoration: none;
+                position: relative;
+                padding-left: 3rem;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    @include size(2rem );
+                    background-color: var(--i)  ;
+                    border-radius: 4rem;
+
+                }
+            }
+        }
+    }
+    &__best{
+        &--icon{
+            @include size(5rem);
+            border-radius: 4px;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--i);
+            position: relative;
+            z-index: 2;
+            
+            &:after{
+                content: '';
+                position: absolute;
+                @include size(80% );
+                padding: 2rem;
+                border-radius: inherit;
+                background-color: currentColor;
+                opacity: 0.1;
+                top: 50%;left: 50%;
+                transform: translate(-50%, -50%); 
+                z-index: 1;
+            }
+        }
+        &--title{
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        &--desc{
+            font-weight: 300;
+        }
+        &--list{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            // margin-bottom: -5rem;
+        }
+        &--item{
+            width: calc(50% - 3rem);
+            margin-bottom: 5rem;
+        }
+    }
+}
+.text-clamp{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &--2{
+        -webkit-line-clamp: 2;
+    }
+}
+// .partner{
+    
+//     margin-bottom: 19rem;
+//     &__container{
+//         max-width: 83rem;
+//         text-align: center;
+//     }
+//     &__title{
+//         font-size: 3rem;
+//         font-weight: bold;
+//         margin-bottom: 7rem;
+//         padding-bottom: 5rem;
+//         border-bottom: 4px solid currentColor;
+//     }
+//     &__list {
+//         @include flex(center,space-between )
+//     }
+// }
+.partner {
+    margin-bottom: 19rem;
+    &__container {
+      max-width: 83rem;
+      text-align: center;
+    }
+    &__title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 7rem;
+      padding-bottom: 7rem;
+      border-bottom: 1px solid currentColor;
+    }
+    &__list {
+      @include flex(center, space-between);
+    }
+  }
+  
