@@ -344,8 +344,7 @@ body {
   flex-direction: row;
 }
 .content__item {
-  width: 250px;
-  margin-bottom: 4rem;
+  width: calc(25% - 22.5px);
 }
 .content__item--img {
   width: 25rem;
@@ -498,13 +497,13 @@ body {
   .partner__item img {
     margin: 0 auto;
   }
-  .connect {
+  .content {
     margin-bottom: 5rem;
   }
-  .connect__list {
+  .content__list {
     flex-wrap: wrap;
   }
-  .connect__item {
+  .content__item {
     width: calc(50% - 1rem);
     margin-bottom: 2rem;
   }

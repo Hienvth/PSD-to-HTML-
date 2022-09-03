@@ -367,8 +367,9 @@ body {
         // @include size( $swidth );
         // margin: 0 10px;
         // width: calc(25% - 22.5px);
-        width: 250px;
-        margin-bottom: 4rem;
+        // width: 250px;
+        width: calc(25% - 22.5px);
+        // margin-bottom: 4rem;
         
         &--img{
             @include size( 25rem );
@@ -387,7 +388,7 @@ body {
         @include flex( flex-start, space-between );
     }
     &__title, 
-    &__info{
+    &__info{  
         flex:1;
     }
     &__title{
@@ -541,7 +542,7 @@ body {
         }
       }
     }
-    .connect {
+    .content {
       margin-bottom: 5rem;
       &__list {
         flex-wrap: wrap;
